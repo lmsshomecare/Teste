@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <style>
     body {
       display: flex;
@@ -40,6 +43,17 @@
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .company-name {
+      font-size: 48px;
+      color: #000;
+      margin-bottom: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1;
+      border-bottom: 2px solid #000;
+      padding-bottom: 20px;
+ 
+}
+
     .testimonial-section {
       text-align: left;
       margin-top: 40px;
@@ -66,20 +80,13 @@
     }
 
     .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin-top: 100px;
+    margin-bottom: 1px; /* Aumente o valor da margem inferior para posicionar o rodapé na parte mais baixa */
     }
-      
-      .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      margin-top: 90px;
-      margin-bottom: 1px;
-      }
-      
+    
       .work-with-us {
       font-size: 16px;
       color: #333;
@@ -125,7 +132,7 @@
       
       .whatsapp-button {
       position: fixed;
-      bottom: 140px;
+      bottom: 130px;
       left: 9,5%;
       transform: translateX(-50%);
       background-color: #25D366;
@@ -150,6 +157,50 @@
       
       }
       </style>
+      <script>
+      // Array com as datas das avaliações (datas aleatórias)
+      const evaluationDates = [
+      new Date('2023-07-15'),
+      new Date('2023-06-28'),
+      new Date('2023-06-10'),
+      new Date('2023-05-20'),
+      new Date('2023-04-05'),
+      // Adicione mais datas conforme necessário
+      ];
+      
+      // Função para calcular a diferença entre duas datas em dias, meses ou anos
+      function calculateTimeDifference(startDate, endDate) {
+      const differenceInMilliseconds = endDate - startDate;
+      const millisecondsPerDay = 24 * 60 * 60 * 1000;
+      const millisecondsPerMonth = 30 * millisecondsPerDay;
+      const millisecondsPerYear = 365 * millisecondsPerDay;
+      
+      if (differenceInMilliseconds >= millisecondsPerYear) {
+      return `${Math.floor(differenceInMilliseconds / millisecondsPerYear)} anos atrás`;
+      } else if (differenceInMilliseconds >= millisecondsPerMonth) {
+      return `${Math.floor(differenceInMilliseconds / millisecondsPerMonth)} meses atrás`;
+      } else {
+      return `${Math.floor(differenceInMilliseconds / millisecondsPerDay)} dias atrás`;
+      }
+      }
+      
+      // Atualizar as informações das avaliações com as datas formatadas
+      evaluationDates.forEach((date, index) => {
+      const timeDifference = calculateTimeDifference(date, new Date());
+      const evaluationElement = document.querySelector(`.testimonial:nth-child(${index + 1}) .evaluation-date`);
+      evaluationElement.textContent = `Avaliação feita (${timeDifference})`;
+      });
+      
+      function redirectToForm() {
+      var hiddenLink = document.getElementById('hidden-link');
+      var link = hiddenLink.getAttribute('data-link');
+      if (link) {
+      window.location.href = link;
+      }
+      }
+      
+      </script>
+      
       </head>
       <body>
       <a class="whatsapp-button" href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank">
@@ -157,58 +208,24 @@
       </a>
       <div class="fixed-menu" id="fixed-menu">
       <div class="logo">
-      <img src="logotipo-lmss.png" alt="Logo da LMSS Home Care">
+      <img src="logotipo-lmss.png" alt="Logo da LMSS Home Care" style="width: 80px;">
       </div>
       <div class="social-icons">
       <a href="https://www.facebook.com/lmsshomecare?mibextid=ZbWKwL" target="_blank">
-      <img src="logotipo-facebook.png" alt="Logo do Facebook" width="800" height="800">
+      <img src="logotipo-facebook.png" alt="Logo do Facebook" style="width: 50px;">
       </a>
       <a href="https://instagram.com/lmsshomecare?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank">
-      <img src="logotipo-instagram.png" alt="Logo do Instagram">
+      <img src="logotipo-instagram.png" alt="Logo do Instagram" style="width: 50px;">
       </a>
       <a href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank">
-      <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp">
+      <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp" style="width: 50px;">
       </a>
       </div>
       </div>
-      <div class="container"></h1>
-      <div class="testimonial-section">
-      <h2>Avaliações dos nossos clientes:</h2>
-      <div class="testimonial">
-        <p class="testimonial-author">João Silva</p>
-        <p class="testimonial-quote">"Estou muito satisfeito com os serviços prestados. A LMSS Home Care enviou profissionais capacitados que cuidaram com carinho do meu pai idoso."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-      <!-- Outros depoimentos aqui -->
-      <div class="testimonial">
-        <p class="testimonial-author">Maria Souza</p>
-        <p class="testimonial-quote">"Excelente atendimento e equipe dedicada. Recomendo a LMSS Home Care a todos que precisam de cuidados especiais."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-author">Pedro Almeida</p>
-        <p class="testimonial-quote">"Fiquei muito satisfeito com o profissionalismo da LMSS Home Care. Os cuidadores são atenciosos e competentes."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-author">Ana Oliveira</p>
-        <p class="testimonial-quote">"A LMSS Home Care oferece um serviço de qualidade e confiança. Estou feliz com a escolha que fiz."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-author">José Santos</p>
-        <p class="testimonial-quote">"Agradeço à LMSS Home Care pela dedicação e cuidado com minha mãe. Profissionais excelentes e comprometidos."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-author">Camila Costa</p>
-        <p class="testimonial-quote">"Recomendo a LMSS Home Care a todos que buscam um atendimento personalizado e de alta qualidade para seus entes queridos."</p>
-        <div class="stars">★★★★★</div>
-      </div>
-    </div>
     <br>
     <br>
     <!-- Textos adicionados -->
+    <div class="container"></h1>
     <div class="role-section">
       <h2>Quais são os deveres de um cuidador de pessoas ?</h2>
       <div class="testimonial">
@@ -227,12 +244,112 @@
         <li>Realizar outras ações para melhorar a qualidade de vida e a recuperação do paciente.</li>
       </ul>
     </div>
-      </div>            
+    
+    <div class="testimonial-section">
+    <h2>Avaliações dos nossos clientes:</h2>
+    <div class="testimonial">
+    <p class="testimonial-author">Cliente Anônimo</p>
+    <p class="testimonial-quote">"Ótimos serviços! Cuidadores atenciosos e prestativos."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 6 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Marina Ribeiro</p>
+    <p class="testimonial-quote">"Experiência incrível! Recomendo a todos."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 9 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">João Carvalho</p>
+    <p class="testimonial-quote">"Cuidaram muito bem do meu pai. Excelente serviço!"</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 14 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Ana Oliveira</p>
+    <p class="testimonial-quote">"Profissionais dedicados e qualificados. Estou satisfeita."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 8 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Carlos Mendes</p>
+    <p class="testimonial-quote">"Atendimento excepcional. Equipe muito prestativa."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 11 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Mariana Lima</p>
+    <p class="testimonial-quote">"Recomendo totalmente. Cuidaram da minha mãe com carinho."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 16 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Mariana Souza</p>
+    <p class="testimonial-quote">"Quando minha avó ficou doente, ficamos preocupados com o cuidado que ela receberia. A equipe da LMSS Home Care foi um verdadeiro raio de sol em nossas vidas. Eles cuidaram dela com tanto carinho e dedicação que não tenho palavras para agradecer. Minha avó se sentiu amada e bem cuidada até o último momento."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 8 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Pedro Fernandes</p>
+    <p class="testimonial-quote">"Quando meu pai teve um acidente, nossa vida virou de cabeça para baixo. A LMSS Home Care não apenas forneceu cuidados médicos excepcionais, mas também trouxe conforto e paz para nossa família. Eles se tornaram parte de nossa jornada de recuperação e sempre estarão em nossos corações."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 11 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Camila Almeida</p>
+    <p class="testimonial-quote">"Cuidar de um ente querido doente é uma experiência desafiadora e emocional. A LMSS Home Care não apenas cuidou de minha mãe com habilidade, mas também nos proporcionou orientação e apoio durante esse período difícil. Cada membro da equipe é uma verdadeira inspiração."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 9 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Ricardo Silva</p>
+    <p class="testimonial-quote">"Nossos dias eram repletos de incerteza quando minha filha ficou doente. A LMSS Home Care se tornou nossa âncora de esperança. Eles não apenas cuidaram de minha filha com competência, mas também trouxeram sorrisos e momentos de alegria. Estamos eternamente gratos por tudo que fizeram por nós."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 10 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Sofia Gonçalves</p>
+    <p class="testimonial-quote">"Quando minha avó precisou de cuidados em casa, estávamos preocupados em encontrar a equipe certa. A LMSS Home Care não apenas cuidou de minha avó com profissionalismo, mas também criou um ambiente de conforto e alegria. Agradeço por tudo que fizeram para tornar seus dias mais luminosos."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 12 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Lucas Oliveira</p>
+    <p class="testimonial-quote">"Minha jornada de recuperação após a cirurgia foi longa e difícil. A LMSS Home Care esteve ao meu lado a cada passo do caminho, fornecendo cuidados excepcionais e apoio emocional. Eles são mais do que profissionais de saúde; são verdadeiros amigos que ajudaram a restaurar minha saúde e minha esperança."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 13 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Isabela Carvalho</p>
+    <p class="testimonial-quote">"Encontrar a LMSS Home Care foi um presente para nossa família. Eles cuidaram do meu avô com a gentileza e a atenção que ele merecia. Cada cuidador trouxe calor humano e amor à sua recuperação. Eles são uma verdadeira bênção e deixaram uma marca duradoura em nossos corações."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 14 meses</p>
+    </div>
+    
+    <div class="testimonial">
+    <p class="testimonial-author">Gustavo Fernandes</p>
+    <p class="testimonial-quote">"Minha mãe enfrentou desafios de saúde significativos e a equipe da LMSS Home Care foi um farol de esperança em tempos difíceis. Eles não apenas cuidaram dela, mas também nos apoiaram emocionalmente. Sinto-me abençoado por ter encontrado essa equipe incrível."</p>
+    <div class="stars">★★★★★</div>
+    <p class="evaluation-date">Há 15 meses</p>
+    </div>
+   
         <p class="footer">&copy; 2023 LMSS Home Care. Todos os direitos reservados.<br> Rua José Melani 101 – Itaquera - São Paulo/SP
         CEP: 08250-720
         <br>
         <span class="work-with-us" onclick="redirectToForm()">Trabalhe conosco</span>
+        <span id="hidden-link" data-link="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link"></span>
         </p>
-      <span id="hidden-link" data-link="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link" style="display: none;"></span>
         </body>
-        </html>
+  </html>

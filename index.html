@@ -23,12 +23,22 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f5f5f5f5; /* Nova cor de fundo (verde do WhatsApp) */
-    padding: 10px 0;
+    background-color: #f5f5f5; /* Nova cor de fundo (verde do WhatsApp) */
+    padding: 0px 0;
     display: flex;
     justify-content: center;
     z-index: 999;
     }
+    
+    .logo-complement {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    margin-top: 42px;
+     /* Ajuste conforme necessário */
+    }
+    
+    .logotipo-lmsshomecare
     
     .social-button {
     margin: 0 10px 0 0; /* Ajuste o valor de margem conforme necessário */
@@ -81,6 +91,12 @@
     margin-bottom: 1px; /* Aumente o valor da margem inferior para posicionar o rodapé na parte mais baixa */
     }
     
+    .video-container {
+    margin-top: 40;
+    background-color: white;
+    text-align: center;
+    }
+    
       .work-with-us {
       font-size: 16px;
       color: #333;
@@ -102,6 +118,11 @@
       align-items: center;
       margin-left: 10px;
       transition: transform 0.3s ease;
+      }
+      
+      .container k {
+      display: flex;
+      margin: 0px;
       }
       
       .logo img {
@@ -145,27 +166,40 @@
       
       	.whatsapp-text {
       margin-right: 20;
-      
       font-size: 14px;
       color: red;
 
       }
       
-      
-        
       .whatsapp-button {
-      /* Estilos existentes do botão ... */
-      
-      /* Adicione a animação pulse */
+      position: fixed;
+      bottom: 90px;
+      right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Adicione este alinhamento */
+      z-index: 1000;
+      width: 3px;
+      height: auto; /* Adicione a altura para evitar que o botão encolha */
+      background-color: #25d366; /* Cor do WhatsApp verde */
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
       animation: pulse 1s infinite;
       }
+      
+      .whatsapp-button img {
+      width: 70px;
+      height: auto;
+      }
+      
       
       .image-section {
       text-align: center;
       background-color: white;
       padding: 20px 0; /* Adicione preenchimento para espaçamento */
       margin-top: 100px; /* Remova a margem superior */
-      margin-bottom: 0; /* Remova a margem inferior */
+      margin-bottom: 40; /* Remova a margem inferior */
       }
         
       /* Definição da animação pulse */
@@ -221,7 +255,39 @@
       }
       }
       
-      </script>
+      .video-section {
+      text-align: center;
+      margin: 40px 0;
+      margin-top: 200px;
+      }
+      
+      .video-section h2 {
+      margin-bottom: 0px;
+      }
+      
+      // Função para atualizar a posição vertical do ícone do WhatsApp
+      // Função para atualizar a posição vertical do botão do WhatsApp
+      function updateWhatsAppPosition() {
+      const whatsappButton = document.querySelector('.whatsapp-button');
+      const scrollY = window.scrollY;
+      
+      // Limite superior para a posição do botão do WhatsApp (20px da borda + 100px de limite)
+      const maxTopPosition = 20 + 100;
+      
+      // Calcula a nova posição superior do botão do WhatsApp
+      const newTopPosition = Math.min(maxTopPosition, scrollY + 20);
+      
+      whatsappButton.style.top = newTopPosition + 'px';
+      }
+      
+      // Atualizar a posição inicial ao carregar a página
+      updateWhatsAppPosition();
+      
+      // Adicionar um ouvinte de evento para a rolagem da página
+      window.addEventListener('scroll', updateWhatsAppPosition);
+      
+       </script>
+      
       </head>
       <body>
       
@@ -230,7 +296,10 @@
       
       <div class="fixed-menu" id="fixed-menu">
       <div class="logo">
-      <img src="logotipo-lmss.png" alt="Logo da LMSS Home Care" style="width: 80px;">
+      <img src="logotipo-lmss.png" alt="Logo da LMSS Home Care" style="width: 69px; margin-bottom: 5px">
+      </div>
+      <div class="logo-complement">
+      <img src="seu-outro-logotipo.png" alt="Logotipo Complementar" style="width: 60px;">
       </div>
       <div class="social-icons">
       <a href="https://www.facebook.com/lmsshomecare?mibextid=ZbWKwL" target="_blank">
@@ -245,32 +314,41 @@
       </div>
       </div>
       
-      <div class="whatsapp-circle">
-      <div class="whatsapp-text">
-      </div>
       
       <a class="whatsapp-button" href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank">
-      <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp" style="width: 70px; height: auto;" whatsapp-text="Estamos online, nos mande uma mensagem !">
+      <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp">
       </a>
+      </div>
       </div>
       
       
       
-    <div class="image-section">
-    <h2>Está precisando de cuidador(a)?</h2>
-    <img src="cuidador.jpg" alt="Está precisando de cuidador(a)?" style="width: 410px; height: auto;">
-    <p> 
-    <h2>Entre em contato conosco:</h2>
-     WhatsApp ou ligação: (11) 91296-5717 <br> Email: email@lmsshomecare.online <br>Atendemos todo o estado de São Paulo.</p>
+    <div class="video-section video-container" style="margin-top: 100px;">
+    <h2>Está precisando de cuidador ?</h2>
+    <div class="video-container">
+    <video width="412px" height="auto" controls poster="Screenshot_20230813-095733-732.png"
+    <source src="video-donaonilda.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+    </video>
+    </div>
+    
+    
+    <p style="margin-top: 10px;">
+    Atendemos todo o estado de São Paulo.
+    </p>
     
     
     </div>
     </div>
+    
+    
+    
+    
     
     
       <div class="testimonial-section">
       <div class="container"></h1>
-      <h2>Quais são os deveres de um cuidador ?</h2>
+      <h2>Quais são os deveres de um cuidador de pessoas ?</h2>
         <li>Atuar como intermediário entre o paciente, a família e a equipe médica.</li><br>
         <li>Ouvir, demonstrar atenção e oferecer apoio ao paciente.</li><br>
         <li>Auxiliar nas atividades de higiene pessoal.</li><br>
@@ -284,10 +362,13 @@
         <li>Realizar outras ações para melhorar a qualidade de vida e a recuperação do paciente.</li>
       
     </div>
+    </div>
     
     
     
-    <div class="testimonial-section">
+    
+    <div class="testimonial-section k" id="testimonial-section k">
+    <div class="container k"></h1> 
     <h2>Avaliações dos nossos clientes:</h2>
     <div class="testimonial">
     <p class="testimonial-author">Cliente Anônimo</p>
@@ -386,18 +467,20 @@
     <div class="stars">★★★★★</div>
     <p class="evaluation-date">Há 15 meses</p>
     </div>
-    
+    </div>
    
    
-        <p class="footer">&copy; 2023 LMSS Home Care. Todos os direitos reservados.<br> Rua José Melani 101 – Itaquera - São Paulo/SP
-        CEP: 08250-720
+     <p class="footer" style="margin-top: 20px;">
+     &copy; 2023 LMSS Home Care. Todos os direitos reservados.<br>
+     Rua José Melani 101 – Itaquera - São Paulo/SP CEP: 08250-720
+     </p>
+     
+         </div>
+         </div>
         
-        
-        </div>
-        
-        
-        <span class="work-with-us" onclick="redirectToForm()">Trabalhe conosco</span>
-        <span id="hidden-link" data-link="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link"></span>
-        </p>
+        <p
+        <a class="work-with-us" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link" style="margin: 20px;">Trabalhe conosco</a>
+         </p>
+         
         </body>
         </html>

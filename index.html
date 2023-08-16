@@ -1,498 +1,520 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html> 
+ <html> 
+ <head> 
   
-  <style>
-    body {
- 
-    
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-image: linear-gradient(to bottom, #F9FAFB, #E5E9F2);
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Adicione o espaçamento lateral desejado aqui */
-    }
-    
-    .fixed-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f5f5f5; /* Nova cor de fundo (verde do WhatsApp) */
-    padding: 0px 0;
-    display: flex;
-    justify-content: center;
-    z-index: 999;
-    }
-    
-    .logo-complement {
-    display: flex;
-    align-items: center;
-    margin-left: 0px;
-    margin-top: 42px;
-     /* Ajuste conforme necessário */
-    }
-    
-    .logotipo-lmsshomecare
-    
-    .social-button {
-    margin: 0 10px 0 0; /* Ajuste o valor de margem conforme necessário */
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-    }
-
-    .container {
-      text-align: center;
-      padding: 50px;
-      border-radius: 15px;
-      background-color: white;
-      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .testimonial-section {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .testimonial {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .testimonial-author {
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .testimonial-quote {
-      margin-top: 10px;
-      color: #555;
-      text-align: center;
-    }
-
-    .stars {
-      color: #FFD700;
-    }
-
-    .footer {
-    text-align: center;
-    font-size: 12px;
-    color: #777;
-    margin-top: 1px;
-    margin-bottom: 1px; /* Aumente o valor da margem inferior para posicionar o rodapé na parte mais baixa */
-    }
-    
-    .video-container {
-    margin-top: 40;
-    background-color: white;
-    text-align: center;
-    }
-    
-      .work-with-us {
-      font-size: 16px;
-      color: #333;
-      text-decoration: underline;
-      cursor: pointer;
-      display: inline-block; /* Adicionado para exibir o link corretamente */
-      margin-top: 10px; /* Adicionado para separar do texto acima */
-      margin-bottom: 50px;
-      text-align: center;
-      }
-      
-      .work-with-us:hover {
-      color: #FFD700; 
-      text-align: center;/* Cor da fonte ao passar o mouse */
-      }
-      
-      .logo {
-      display: flex;
-      align-items: center;
-      margin-left: 10px;
-      transition: transform 0.3s ease;
-      }
-      
-      .container k {
-      display: flex;
-      margin: 0px;
-      }
-      
-      .logo img {
-      width: 50px;
-      height: auto;
-      }
-      
-      .social-icons {
-      display: flex;
-      align-items: center;
-      margin-left: auto; /* Ajuste esta linha */
-      transition: transform 0.3s ease;
-      margin-right: 15px;
-      }
-      
-      .social-icons a {
-      margin: 0 5px;
-      }
-      
-      .social-icons img {
-      width: 70px;
-      height: auto;
-      right: 70px;
-      }
-      
-      .whatsapp-circle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      z-index: 1000;
-      width: auto;
-      }
-      
-      .whatsapp-circle img {
-      width: 50px;
-      height: auto;
-      margin-left: 10px;
-      }
-      
-      	.whatsapp-text {
-      margin-right: 20;
-      font-size: 14px;
-      color: red;
-
-      }
-      
-      .whatsapp-button {
-      position: fixed;
-      bottom: 90px;
-      right: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Adicione este alinhamento */
-      z-index: 1000;
-      width: 3px;
-      height: auto; /* Adicione a altura para evitar que o botão encolha */
-      background-color: #25d366; /* Cor do WhatsApp verde */
-      color: white;
-      border-radius: 50%;
-      text-decoration: none;
-      animation: pulse 1s infinite;
-      }
-      
-      .whatsapp-button img {
-      width: 70px;
-      height: auto;
-      }
-      
-      
-      .image-section {
-      text-align: center;
-      background-color: white;
-      padding: 20px 0; /* Adicione preenchimento para espaçamento */
-      margin-top: 100px; /* Remova a margem superior */
-      margin-bottom: 40; /* Remova a margem inferior */
-      }
-        
-      /* Definição da animação pulse */
-      @keyframes pulse {
-      0%, 100% {
-      transform: scale(1);
-      }
-      50% {
-      transform: scale(1.1);
-      }
-      }
-      
-      </style>
-      <script>
-      // Array com as datas das avaliações (datas aleatórias)
-      const evaluationDates = [
-      new Date('2023-07-15'),
-      new Date('2023-06-28'),
-      new Date('2023-06-10'),
-      new Date('2023-05-20'),
-      new Date('2023-04-05'),
-      // Adicione mais datas conforme necessário
-      ];
-      
-      // Função para calcular a diferença entre duas datas em dias, meses ou anos
-      function calculateTimeDifference(startDate, endDate) {
-      const differenceInMilliseconds = endDate - startDate;
-      const millisecondsPerDay = 24 * 60 * 60 * 1000;
-      const millisecondsPerMonth = 30 * millisecondsPerDay;
-      const millisecondsPerYear = 365 * millisecondsPerDay;
-      
-      if (differenceInMilliseconds >= millisecondsPerYear) {
-      return `${Math.floor(differenceInMilliseconds / millisecondsPerYear)} anos atrás`;
-      } else if (differenceInMilliseconds >= millisecondsPerMonth) {
-      return `${Math.floor(differenceInMilliseconds / millisecondsPerMonth)} meses atrás`;
-      } else {
-      return `${Math.floor(differenceInMilliseconds / millisecondsPerDay)} dias atrás`;
-      }
-      }
-      
-      // Atualizar as informações das avaliações com as datas formatadas
-      evaluationDates.forEach((date, index) => {
-      const timeDifference = calculateTimeDifference(date, new Date());
-      const evaluationElement = document.querySelector(`.testimonial:nth-child(${index + 1}) .evaluation-date`);
-      evaluationElement.textContent = `Avaliação feita (${timeDifference})`;
-      });
-      
-      function redirectToForm() {
-      var hiddenLink = document.getElementById('hidden-link');
-      var link = hiddenLink.getAttribute('data-link');
-      if (link) {
-      window.location.href = link;
-      }
-      }
-      
-      .video-section {
-      text-align: center;
-      margin: 40px 0;
-      margin-top: 200px;
-      }
-      
-      .video-section h2 {
-      margin-bottom: 0px;
-      }
-      
-      // Função para atualizar a posição vertical do ícone do WhatsApp
-      // Função para atualizar a posição vertical do botão do WhatsApp
-      function updateWhatsAppPosition() {
-      const whatsappButton = document.querySelector('.whatsapp-button');
-      const scrollY = window.scrollY;
-      
-      // Limite superior para a posição do botão do WhatsApp (20px da borda + 100px de limite)
-      const maxTopPosition = 20 + 100;
-      
-      // Calcula a nova posição superior do botão do WhatsApp
-      const newTopPosition = Math.min(maxTopPosition, scrollY + 20);
-      
-      whatsappButton.style.top = newTopPosition + 'px';
-      }
-      
-      // Atualizar a posição inicial ao carregar a página
-      updateWhatsAppPosition();
-      
-      // Adicionar um ouvinte de evento para a rolagem da página
-      window.addEventListener('scroll', updateWhatsAppPosition);
-      
-       </script>
-      
-      </head>
-      <body>
-      
-      <link rel="icon" type="image/x-icon" href="favicon.ico">
-      
-      
-      <div class="fixed-menu" id="fixed-menu">
-      <div class="logo">
-      <img src="logotipo-lsssss.png" alt="Logo da LMSS Home Care" style="width: 69px; margin-bottom: 5px">
-      </div>
-      <div class="logo-complement">
-      <img src="seu-outro-logotipo.png" alt="Logotipo Complementar" style="width: 60px;">
-      </div>
-      <div class="social-icons">
-      <a href="https://www.facebook.com/lmsshomecare?mibextid=ZbWKwL" target="_blank">
-      <img src="logotipo-facebook.png" alt="Logo do Facebook" style="width: 50px;">
-      </a>
-      <a href="https://instagram.com/lmsshomecare?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank">
-      <img src="logotipo-instagram.png" alt="Logo do Instagram" style="width: 50px;">
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank">
-      <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp" style="width: 50px;">
-      </a>
-      </div>
-      </div>
-      
-      
-      
-      
-      
-      
-    <div class="video-section video-container" style="margin-top: 100px;">
-    <h2>Está precisando de cuidador ?</h2>
-    <div class="video-container">
-    <video width="412px" height="auto" controls poster="Screenshot_20230813-095733-732.png"
-    <source src="videoidosa.mp4" type="video/mp4">
-    Seu navegador não suporta o elemento de vídeo.
-    </video>
-    </div>
-    
-  <div class="button-container">
-  <a href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20fazer%20um%20or%C3%A7amento" target="_blank" class="custom-button" style="position: ; bottom: 20px; right: 70px; z-index: 1000; padding: 5px 70px; background-color: #25d366; border-radius: 20px; color: white; font-size: 16px; text-transform: uppercase; font-family: 'Arial', sans-serif; text-decoration: none; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; margin: 0 60px; margin-top: 10px;">
-  Fazer orçamento online !
-  </a>
-  </div>
-  
-  
-  
-  
-  
-    
-    
-    
-    
-    <p style="margin-top: 10px;">
-    Atendemos todo o estado de São Paulo.
-    </p>
-    
-    
-    </div>
-    </div>
-    
-    
-    
-    
-    
-    
-      <div class="testimonial-section">
-      <div class="container"></h1>
-      <h2>Quais são os deveres de um cuidador de pessoas ?</h2>
-        <li>Atuar como intermediário entre o paciente, a família e a equipe médica.</li><br>
-        <li>Ouvir, demonstrar atenção e oferecer apoio ao paciente.</li><br>
-        <li>Auxiliar nas atividades de higiene pessoal.</li><br>
-        <li>Estimular e ajudar na alimentação.</li><br>
-        <li>Apoiar na locomoção e em atividades físicas leves.</li><br>
-        <li>Incentivar atividades de lazer e ocupacionais.</li><br>
-        <li>Realizar ajustes na posição do paciente e proporcionar massagens relaxantes.</li><br>
-        <li>Administrar medicamentos simples por via oral, seguindo a prescrição médica.</li><br>
-        <li>Comunicar à equipe médica sobre mudanças no estado de saúde do paciente.</li><br>
-        <li>Realizar troca de curativos simples conforme instruções médicas.</li><br>
-        <li>Realizar outras ações para melhorar a qualidade de vida e a recuperação do paciente.</li>
-      
-    </div>
-    </div>
-    
-    
-    
-    
-    <div class="testimonial-section k" id="testimonial-section k">
-    <div class="container k"></h1> 
-    <h2>Avaliações dos nossos clientes:</h2>
-    <div class="testimonial">
-    <p class="testimonial-author">Cliente Anônimo</p>
-    <p class="testimonial-quote">"Ótimos serviços! Cuidadores atenciosos e prestativos."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 6 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Marina Ribeiro</p>
-    <p class="testimonial-quote">"Experiência incrível! Recomendo a todos."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 9 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">João Carvalho</p>
-    <p class="testimonial-quote">"Cuidaram muito bem do meu pai. Excelente serviço!"</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 14 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Ana Oliveira</p>
-    <p class="testimonial-quote">"Profissionais dedicados e qualificados. Estou satisfeita."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 8 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Carlos Mendes</p>
-    <p class="testimonial-quote">"Atendimento excepcional. Equipe muito prestativa."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 11 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Mariana Lima</p>
-    <p class="testimonial-quote">"Recomendo totalmente. Cuidaram da minha mãe com carinho."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 16 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Mariana Souza</p>
-    <p class="testimonial-quote">"Quando minha avó ficou doente, ficamos preocupados com o cuidado que ela receberia. A equipe da LMSS Home Care foi um verdadeiro raio de sol em nossas vidas. Eles cuidaram dela com tanto carinho e dedicação que não tenho palavras para agradecer. Minha avó se sentiu amada e bem cuidada até o último momento."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 8 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Pedro Fernandes</p>
-    <p class="testimonial-quote">"Quando meu pai teve um acidente, nossa vida virou de cabeça para baixo. A LMSS Home Care não apenas forneceu cuidados médicos excepcionais, mas também trouxe conforto e paz para nossa família. Eles se tornaram parte de nossa jornada de recuperação e sempre estarão em nossos corações."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 11 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Camila Almeida</p>
-    <p class="testimonial-quote">"Cuidar de um ente querido doente é uma experiência desafiadora e emocional. A LMSS Home Care não apenas cuidou de minha mãe com habilidade, mas também nos proporcionou orientação e apoio durante esse período difícil. Cada membro da equipe é uma verdadeira inspiração."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 9 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Ricardo Silva</p>
-    <p class="testimonial-quote">"Nossos dias eram repletos de incerteza quando minha filha ficou doente. A LMSS Home Care se tornou nossa âncora de esperança. Eles não apenas cuidaram de minha filha com competência, mas também trouxeram sorrisos e momentos de alegria. Estamos eternamente gratos por tudo que fizeram por nós."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 10 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Sofia Gonçalves</p>
-    <p class="testimonial-quote">"Quando minha avó precisou de cuidados em casa, estávamos preocupados em encontrar a equipe certa. A LMSS Home Care não apenas cuidou de minha avó com profissionalismo, mas também criou um ambiente de conforto e alegria. Agradeço por tudo que fizeram para tornar seus dias mais luminosos."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 12 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Lucas Oliveira</p>
-    <p class="testimonial-quote">"Minha jornada de recuperação após a cirurgia foi longa e difícil. A LMSS Home Care esteve ao meu lado a cada passo do caminho, fornecendo cuidados excepcionais e apoio emocional. Eles são mais do que profissionais de saúde; são verdadeiros amigos que ajudaram a restaurar minha saúde e minha esperança."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 13 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Isabela Carvalho</p>
-    <p class="testimonial-quote">"Encontrar a LMSS Home Care foi um presente para nossa família. Eles cuidaram do meu avô com a gentileza e a atenção que ele merecia. Cada cuidador trouxe calor humano e amor à sua recuperação. Eles são uma verdadeira bênção e deixaram uma marca duradoura em nossos corações."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 14 meses</p>
-    </div>
-    
-    <div class="testimonial">
-    <p class="testimonial-author">Gustavo Fernandes</p>
-    <p class="testimonial-quote">"Minha mãe enfrentou desafios de saúde significativos e a equipe da LMSS Home Care foi um farol de esperança em tempos difíceis. Eles não apenas cuidaram dela, mas também nos apoiaram emocionalmente. Sinto-me abençoado por ter encontrado essa equipe incrível."</p>
-    <div class="stars">★★★★★</div>
-    <p class="evaluation-date">Há 15 meses</p>
-    </div>
-    </div>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="styles.css">
+   <style> 
    
-      <br>
-     <p class="footer" style="margin-top: 8px;">
-     &copy; 2023 LMSS Home Care. Todos os direitos reservados.<br>
-     Rua José Melani 101 – Itaquera - São Paulo/SP CEP: 08250-720
+       body { 
+       display: flex; 
+       flex-direction: column; 
+       justify-content: space-between; 
+       align-items: center; 
+       min-height: 100vh; 
+       margin: 0; 
+       background-image: linear-gradient(to bottom, #F9FAFB, #E5E9F2); 
+       font-family: 'Helvetica Neue', Arial, sans-serif; /* Adicione o espaçamento lateral desejado aqui */ 
+     } 
+     
+     .menu-icon-container {
+     position: fixed;
+     top: 1px;
+     left: 8px;
+     z-index: 1001; /* Certifique-se de que está acima do menu fixo */
+     }
+     
+     .menu-icon {
+     font-size: 24px;
+     cursor: pointer;
+     }
+  
+     .fixed-menu { 
+     position: fixed; 
+     top: 0; 
+     left: 0; 
+     width: 100%; 
+     background-color: #f5f5f5; /* Nova cor de fundo (verde do WhatsApp) */ 
+     padding: 0px 0; 
+     display: flex; 
+     justify-content: center; 
+     z-index: 1000; 
+     }
+  
+     .logo-complement { 
+     display: flex; 
+     align-items: center; 
+     margin-left: 0px; 
+     margin-top: 42px; 
+      /* Ajuste conforme necessário */ 
+     } 
+  
+     .logotipo-lmsshomecare 
+  
+     .social-button { 
+     margin: 0 10px 0 0; /* Ajuste o valor de margem conforme necessário */ 
+     font-size: 18px; 
+     color: white; 
+     text-decoration: none; 
+     } 
+  
+     .container { 
+       text-align: center; 
+       padding: 50px; 
+       margin-top: 0px;
+       border-radius: 0px; 
+       background-color: white; 
+       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.0); 
+     } 
+  
+     .testimonial-section { 
+       text-align: center; 
+       margin-top: 40px;
+     } 
      
      
-         </div>
-         
+  
+     .testimonial { 
+       background-color: #f9f9f9; 
+       border-radius: 10px; 
+       padding: 20px; 
+       margin-bottom: 20px; 
+       text-align: center; 
+     } 
+  
+     .testimonial-author { 
+       font-weight: bold; 
+       text-align: center; 
+     } 
+  
+     .testimonial-quote { 
+       margin-top: 10px; 
+       color: #555; 
+       text-align: center; 
+     } 
+  
+     .stars { 
+       color: #FFD700; 
+     } 
+  
+     .footer { 
+     text-align: center; 
+     font-size: 12px; 
+     color: #777; 
+     margin-top: 0px; 
+     margin-bottom: 10px; /* Aumente o valor da margem inferior para posicionar o rodapé na parte mais baixa */ 
+     } 
+  
+     .video-container { 
+     margin-top: 40; 
+     background-color: white; 
+     text-align: center; 
+     } 
+  
+       .work-with-us { 
+       font-size: 16px; 
+       color: #333; 
+       text-decoration: underline; 
+       cursor: pointer; 
+       display: inline-block; /* Adicionado para exibir o link corretamente */ 
+       margin-top: 0px; /* Adicionado para separar do texto acima */ 
+       margin-bottom: 15px; 
+       text-align: center; 
+       } 
+  
+       .work-with-us:hover { 
+       color: #FFD700;  
+       text-align: center;/* Cor da fonte ao passar o mouse */ 
+       } 
+  
+       .logo { 
+       display: flex; 
+       align-items: center; 
+       margin-left: 10px; 
+       transition: transform 0.3s ease; 
+       } 
+  
+       .container k { 
+       display: flex; 
+       margin: 0px;
+       } 
+  
+       .logo img { 
+       width: 50px; 
+       height: auto; 
+       } 
+  
+       .social-icons { 
+       display: flex; 
+       align-items: center; 
+       margin-left: auto; /* Ajuste esta linha */ 
+       transition: transform 0.3s ease; 
+       margin-right: 15px; 
+       } 
+  
+       .social-icons a { 
+       margin: 0 5px; 
+       } 
+  
+       .social-icons img { 
+       width: 70px; 
+       height: auto; 
+       right: 70px; 
+       } 
+  
+       .whatsapp-circle { 
+       position: fixed; 
+       bottom: 20px; 
+       right: 20px; 
+       display: flex; 
+       align-items: center; 
+       z-index: 1000; 
+       width: auto; 
+       } 
+  
+       .whatsapp-circle img { 
+       width: 50px; 
+       height: auto; 
+       margin-left: 10px; 
+       } 
+  
+       .whatsapp-text { 
+       margin-right: 20; 
+       font-size: 14px; 
+       color: red; 
+  
+       } 
+  
+       .whatsapp-button { 
+       position: fixed; 
+       bottom: 90px;
+       right: 50px; 
+       display: flex; 
+       align-items: center; 
+       justify-content: center; /* Adicione este alinhamento */ 
+       z-index: 1000; 
+       width: 3px; 
+       height: auto; /* Adicione a altura para evitar que o botão encolha */ 
+       background-color: #25d366; /* Cor do WhatsApp verde */ 
+       color: white; 
+       border-radius: 50%; 
+       text-decoration: none; 
+       animation: pulse 1s infinite; 
+       } 
+  
+       .whatsapp-button img { 
+       width: 70px; 
+       height: auto; 
+       } 
+  
+  
+       .image-section { 
+       text-align: center; 
+       background-color: white; 
+       padding: 20px 0; /* Adicione preenchimento para espaçamento */ 
+       margin-top: 100px; /* Remova a margem superior */ 
+       margin-bottom: 40; /* Remova a margem inferior */ 
+       } 
+  
+       /* Definição da animação pulse */ 
+       @keyframes pulse { 
+       0%, 100% { 
+       transform: scale(1); 
+       } 
+       50% { 
+       transform: scale(1.1); 
+       } 
+       } 
+  
+  .menu-links {
+  display: none;
+  background-color: #f5f5f5;
+  padding: 0;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  list-style-type: none;
+  border-top: none;
+  }
+  
+  .menu-links.active {
+  display: block;
+  background-color: #f5f5f5;
+  padding: 10px 0; /* Adicione padding somente na parte superior e inferior */
+  border-top: none;
+  max-height: 500px;
+  transition: max-height 0.3s ease-in-out;
+  flex-direction: column;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  top: 10px;
+  }
+  
+  .menu-links a {
+  margin-top: 7px;
+  display: block;
+  padding: 7px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+  margin-bottom: 0px;
+  }
+  
+  .menu-links a:hover {
+  background-color: #e5e5e5;
+  </style> 
+
+       <script>       
+       const evaluationDates = [ 
+       new Date('2023-07-15'), 
+       new Date('2023-06-28'), 
+       new Date('2023-06-10'), 
+       new Date('2023-05-20'), 
+       new Date('2023-04-05'),
+       ]; 
+  
+       // Função para calcular a diferença entre duas datas em dias, meses ou anos 
+       function calculateTimeDifference(startDate, endDate) { 
+       const differenceInMilliseconds = endDate - startDate; 
+       const millisecondsPerDay = 24 * 60 * 60 * 1000; 
+       const millisecondsPerMonth = 30 * millisecondsPerDay; 
+       const millisecondsPerYear = 365 * millisecondsPerDay; 
+  
+       if (differenceInMilliseconds >= millisecondsPerYear) { 
+       return `${Math.floor(differenceInMilliseconds / millisecondsPerYear)} anos atrás`; 
+       } else if (differenceInMilliseconds >= millisecondsPerMonth) { 
+       return `${Math.floor(differenceInMilliseconds / millisecondsPerMonth)} meses atrás`; 
+       } else { 
+       return `${Math.floor(differenceInMilliseconds / millisecondsPerDay)} dias atrás`; 
+       } 
+       }
+       
+
+       function redirectToForm() {
+       var hiddenLink = document.getElementById('hidden-link');
+       var link = hiddenLink.getAttribute('data-link');
+       if (link) {
+       window.location.href = link;
+       }
+}
+
+function toggleMenu() {
+      var menuLinks = document.querySelector(".menu-links");
+      menuLinks.classList.toggle("active");
+    }
+      
+       function updateWhatsAppPosition() {
+       const whatsappButton = document.querySelector('.whatsapp-button'); 
+       const scrollY = window.scrollY; 
+  
+       const maxTopPosition = 20 + 100; 
+  
+       const newTopPosition = Math.min(maxTopPosition, scrollY + 20);
+       } 
+  
+       updateWhatsAppPosition();
+
+    window.addEventListener('scroll', updateWhatsAppPosition);
+    
+    evaluationDates.forEach((date, index) => { 
+    const timeDifference = calculateTimeDifference(date, new Date()); 
+    const evaluationElement = document.querySelector(`.testimonial:nth-child(${index + 1}) .evaluation-date`); 
+    if (evaluationElement) {
+    evaluationElement.textContent = `Avaliação feita (${timeDifference})`; 
+    }
+    });
+
+
+  
+        </script> 
+  
+       </head> 
+       <body> 
+  
+       <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+  
+  
+       <div class="fixed-menu" id="fixed-menu">
+       <div class="menu-icon-container">
+       <div class="menu-icon" onclick="toggleMenu()"> ☰ </div>
+       </div>
+       <div class="menu-links" id="menu-links">
+       <a href="cursos.html">Cursos</a>
+       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link">Trabalhe conosco</a>
+       </div>
+       <div class="logo" style="margin-top: 10px;">
+       <img src="logotipo-lsssss.png" alt="Logo da LMSS Home Care" style="width: 69px; margin-bottom: 5px"> 
+       </div> 
+       <div class="logo-complement">
+       <img src="seu-outro-logotipo.png" alt="Logotipo Complementar" style="width: 60px; margin-top: 16px;"> 
+       </div> 
+       <div class="social-icons" style="margin-top: 15px;">
+       <a href="https://www.facebook.com/lmsshomecare?mibextid=ZbWKwL" target="_blank"> 
+       <img src="logotipo-facebook.png" alt="Logo do Facebook" style="width: 50px;"> 
+       </a> 
+       <a href="https://instagram.com/lmsshomecare?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank"> 
+       <img src="logotipo-instagram.png" alt="Logo do Instagram" style="width: 50px;"> 
+       </a> 
+       <a href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank"> 
+       <img src="logotipo-whatsapp.png" alt="Logo do WhatsApp" style="width: 50px;"> 
+       </a> 
+       </div>
+       </div>
+  
+     <div class="video-section video-container" style="margin-top: 115px;"> 
+     <h2>Está precisando de cuidador ?</h2> 
+     <div class="video-container"> 
+     <video width="412px" height="auto" controls poster="Screenshot_20230813-095733-732.png" 
+     <source src="videoidosa.mp4" type="video/mp4"> 
+     Seu navegador não suporta o elemento de vídeo. 
+     </video> 
+     </div> 
+  
+   <div class="button-container" style="margin-bottom: 15px;">
+   <a href="https://api.whatsapp.com/send?phone=5511912965717&text=Ol%C3%A1!%20gostaria%20de%20fazer%20um%20or%C3%A7amento" target="_blank" class="custom-button" style="position: ; bottom: 20px; right: 70px; z-index: 1000; padding: 10px 70px; background-color: #25d366; border-radius: 60px; color: white; font-size: 18px; text-transform: uppercase; font-family: 'Arial', sans-serif; text-decoration: none; transition: transform 0.3s ease; display: flex; align-items: center; justify-content: center; margin: 0 20px; margin-top: 10px;"> 
+   Solicitar uma proposta 
+   </a> 
+  
+  
+     </div> 
+     </div> 
+  
+         <div class="testimonial-section"> 
+         <div class="container" style="margin-bottom: 0px;"></h1> 
+         <h2>Quais são os deveres de um cuidador de pessoas ?</h2> 
+         <li>Atuar como intermediário entre o paciente, a família e a equipe médica.</li><br> 
+         <li>Ouvir, demonstrar atenção e oferecer apoio ao paciente.</li><br> 
+         <li>Auxiliar nas atividades de higiene pessoal.</li><br> 
+         <li>Estimular e ajudar na alimentação.</li><br> 
+         <li>Apoiar na locomoção e em atividades físicas leves.</li><br> 
+         <li>Incentivar atividades de lazer e ocupacionais.</li><br> 
+         <li>Realizar ajustes na posição do paciente e proporcionar massagens relaxantes.</li><br> 
+         <li>Administrar medicamentos simples por via oral, seguindo a prescrição médica.</li><br> 
+         <li>Comunicar à equipe médica sobre mudanças no estado de saúde do paciente.</li><br> 
+         <li>Realizar troca de curativos simples conforme instruções médicas.</li><br> 
+         <li>Realizar outras ações para melhorar a qualidade de vida e a recuperação do paciente.</li> 
+  
+     </div> 
+     </div> 
+
+     <div class="testimonial-section k" id="testimonial-section k"> 
+     <div class="container k" style="background-color: transparent;">
+     <h2>Avaliações dos nossos clientes:</h2> 
+     <div class="testimonial"> 
+     <p class="testimonial-author">Cliente Anônimo</p> 
+     <p class="testimonial-quote">"Ótimos serviços! Cuidadores atenciosos e prestativos."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 6 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Marina Ribeiro</p> 
+     <p class="testimonial-quote">"Experiência incrível! Recomendo a todos."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 9 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">João Carvalho</p> 
+     <p class="testimonial-quote">"Cuidaram muito bem do meu pai. Excelente serviço!"</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 14 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Ana Oliveira</p> 
+     <p class="testimonial-quote">"Profissionais dedicados e qualificados. Estou satisfeita."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 8 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Carlos Mendes</p> 
+     <p class="testimonial-quote">"Atendimento excepcional. Equipe muito prestativa."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 11 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Mariana Lima</p> 
+     <p class="testimonial-quote">"Recomendo totalmente. Cuidaram da minha mãe com carinho."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 16 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Mariana Souza</p> 
+     <p class="testimonial-quote">"Quando minha avó ficou doente, ficamos preocupados com o cuidado que ela receberia. A equipe da LMSS Home Care foi um verdadeiro raio de sol em nossas vidas. Eles cuidaram dela com tanto carinho e dedicação que não tenho palavras para agradecer. Minha avó se sentiu amada e bem cuidada até o último momento."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 8 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Pedro Fernandes</p> 
+     <p class="testimonial-quote">"Quando meu pai teve um acidente, nossa vida virou de cabeça para baixo. A LMSS Home Care não apenas forneceu cuidados médicos excepcionais, mas também trouxe conforto e paz para nossa família. Eles se tornaram parte de nossa jornada de recuperação e sempre estarão em nossos corações."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 11 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Camila Almeida</p> 
+     <p class="testimonial-quote">"Cuidar de um ente querido doente é uma experiência desafiadora e emocional. A LMSS Home Care não apenas cuidou de minha mãe com habilidade, mas também nos proporcionou orientação e apoio durante esse período difícil. Cada membro da equipe é uma verdadeira inspiração."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 9 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Ricardo Silva</p> 
+     <p class="testimonial-quote">"Nossos dias eram repletos de incerteza quando minha filha ficou doente. A LMSS Home Care se tornou nossa âncora de esperança. Eles não apenas cuidaram de minha filha com competência, mas também trouxeram sorrisos e momentos de alegria. Estamos eternamente gratos por tudo que fizeram por nós."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 10 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Sofia Gonçalves</p> 
+     <p class="testimonial-quote">"Quando minha avó precisou de cuidados em casa, estávamos preocupados em encontrar a equipe certa. A LMSS Home Care não apenas cuidou de minha avó com profissionalismo, mas também criou um ambiente de conforto e alegria. Agradeço por tudo que fizeram para tornar seus dias mais luminosos."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 12 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Lucas Oliveira</p> 
+     <p class="testimonial-quote">"Minha jornada de recuperação após a cirurgia foi longa e difícil. A LMSS Home Care esteve ao meu lado a cada passo do caminho, fornecendo cuidados excepcionais e apoio emocional. Eles são mais do que profissionais de saúde; são verdadeiros amigos que ajudaram a restaurar minha saúde e minha esperança."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 13 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Isabela Carvalho</p> 
+     <p class="testimonial-quote">"Encontrar a LMSS Home Care foi um presente para nossa família. Eles cuidaram do meu avô com a gentileza e a atenção que ele merecia. Cada cuidador trouxe calor humano e amor à sua recuperação. Eles são uma verdadeira bênção e deixaram uma marca duradoura em nossos corações."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 14 meses</p> 
+     </div> 
+  
+     <div class="testimonial"> 
+     <p class="testimonial-author">Gustavo Fernandes</p> 
+     <p class="testimonial-quote">"Minha mãe enfrentou desafios de saúde significativos e a equipe da LMSS Home Care foi um farol de esperança em tempos difíceis. Eles não apenas cuidaram dela, mas também nos apoiaram emocionalmente. Sinto-me abençoado por ter encontrado essa equipe incrível."</p> 
+     <div class="stars">★★★★★</div> 
+     <p class="evaluation-date">Há 15 meses</p> 
+     </div>
+     </div>
+  
         
-        <br>
-        <a class="work-with-us" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link" style="margin: 0px;">Trabalhe conosco</a>
-         </p>
+      <p class="work-with-us" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ2lALatQxDauY3mP2AE-j1heB61DUpmwNFWEzHiQDVaLxA/viewform?usp=sf_link">Trabalhe conosco</p>
+      
+  
+          </div>
+         <a class="footer">
+         &copy; 2023 LMSS Home Care. Todos os direitos reservados.<br> 
+         Rua José Melani 101 – Itaquera - São Paulo/SP CEP: 08250-720</a>
          
-         </div>
-         </div>
-         
-        </body>
-        </html>
+  
+          </div> 
+          </div>
+  
+         </body> 
+         </html>

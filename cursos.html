@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cursos Em Breve !</title>
+<style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .back-button a {
+            color: black; /* Defina a cor do texto para preto */
+            text-decoration: none; /* Remova a sublinhado do link */
+            border-bottom: 1px solid black;
+        }
+        .header {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        .content {
+            text-align: center;
+            padding: 70px;
+            background-color: #e0e0e0;
+            margin-top: 0px;
+        }
+        h1 {
+            margin-bottom: 15px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        .content h1 {
+            margin-bottom: 15px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #000;
+            animation: typing 3s steps(40) 1s 1 normal both, blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+        from {
+        width: 0;
+        }
+        to {
+        width: 100%;
+        }
+        }
+        @keyframes blink-caret {
+        from, to {
+        border-color: transparent;
+        }
+        50% {
+        border-color: #000;
+        }
+        }
+        @keyframes pulse {
+        0%, 100% {
+        transform: scale(1);
+        }
+        50% {
+        transform: scale(1.1);
+        }
+        60% {	
+        transform: scale(1.05);
+        }
+        70% {
+        transform: scale(1.1);
+        }
+        }
+</style>
+</head>
+<body>
+        <div class="header">
+        <img class="logo" src="logotipo-lsssss.png" alt="Logo da LMSS Home Care">
+</div>
+</div>
+        <div class="content">
+        <h1>Cursos Em Breve !</h1>
+        <div class="back-button">
+        <a href="index.html" id="back-link">Voltar para a página principal</a>
+</div>
+</div>
+         <div>
+         <a class="footer">
+         &copy; 2023 LMSS Home Care. Todos os direitos reservados.<br> 
+         Rua José Melani 101 – Itaquera - São Paulo/SP CEP: 08250-720</a>
+</div>
+</div>
+<script>
+    window.onload = function () {
+    const titleElement = document.querySelector('.content h1');
+    titleElement.classList.add('typing-animation');
+    
+    const backButtonElement = document.querySelector('.back-button');
+    backButtonElement.style.display = "none"; // Oculta o botão inicialmente
+    
+    setTimeout(function () {
+    backButtonElement.style.display = "block"; // Exibe o botão após 5 segundos
+    }, 5000); // 5000 milissegundos = 5 segundos
+    
+    const typingTextElement = document.querySelector('.typing-text'); // Seletor para o elemento que contém o texto
+    const typingText = typingTextElement.textContent; // Salve o conteúdo original
+    typingTextElement.textContent = ""; // Limpe o conteúdo original ou deixe vazio se necessário
+    
+    let currentIndex = 0;
+    const typingInterval = setInterval(function () {
+    typingTextElement.textContent += typingText[currentIndex];
+    currentIndex++;
+    
+    if (currentIndex === typingText.length) {
+    clearInterval(typingInterval);
+    }
+    }, 100);
+    };
+</script>
+</body>
+</html>
+
+

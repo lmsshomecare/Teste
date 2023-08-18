@@ -40,7 +40,38 @@
             background-color: #f5f5f5;
             padding: 10px;
             border-top: 1px solid #ccc;
+            }
+        .pre-inscricao-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FF4500; /* Cor de vermelho específica */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
         }
+        .pre-inscricao-button:hover {
+        background-color: #BF360C; /* Tom mais escuro para o efeito hover */
+        }
+        .pre-inscricao-button a {
+        color: white; /* Keep the text color white for better visibility */
+        text-decoration: none; /* Remove the underline from the link */
+        background-color: #FF4500; /* Keep the background color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        }
+        
+        .pre-inscricao-button a:hover {
+        background-color: #BF360C;
+        }
+        
         .logo {
             width: 100px;
             height: auto;
@@ -94,6 +125,9 @@
 </div>
         <div class="content">
         <h1>Cursos Em Breve !</h1>
+        <div class="pre-inscricao-button">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdB1OmQTag7usaRkutJEYrS-u29XQOl5d-Pw6_dEWbCXgegMA/viewform?usp=sf_link">Fazer Pré Inscrição</a>
+</div>
         <div class="back-button">
         <a href="index.html" id="back-link">Voltar para a página principal</a>
 </div>
@@ -105,16 +139,20 @@
 </div>
 </div>
 <script>
-    window.onload = function () {
-    const titleElement = document.querySelector('.content h1');
-    titleElement.classList.add('typing-animation');
-    
-    const backButtonElement = document.querySelector('.back-button');
-    backButtonElement.style.display = "none"; // Oculta o botão inicialmente
-    
-    setTimeout(function () {
-    backButtonElement.style.display = "block"; // Exibe o botão após 5 segundos
-    }, 5000); // 5000 milissegundos = 5 segundos
+     window.onload = function () {
+     const titleElement = document.querySelector('.content h1');
+     titleElement.classList.add('typing-animation');
+     
+     const backButtonElement = document.querySelector('.back-button');
+     const preInscricaoButtonElement = document.querySelector('.pre-inscricao-button');
+     
+     backButtonElement.style.display = "none"; // Oculta o botão inicialmente
+     preInscricaoButtonElement.style.display = "none"; // Oculta o botão de pré-inscrição inicialmente
+     
+     setTimeout(function () {
+     backButtonElement.style.display = "block"; // Exibe o botão "Voltar" após 5 segundos
+     preInscricaoButtonElement.style.display = "block"; // Exibe o botão de pré-inscrição após 5 segundos
+     }, 5000);
     
     const typingTextElement = document.querySelector('.typing-text'); // Seletor para o elemento que contém o texto
     const typingText = typingTextElement.textContent; // Salve o conteúdo original
@@ -133,5 +171,3 @@
 </script>
 </body>
 </html>
-
-
